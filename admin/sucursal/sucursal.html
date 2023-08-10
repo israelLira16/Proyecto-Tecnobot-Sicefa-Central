@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>SICEFA_CENTRAL</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta name="description" content="P&aacute;gina SICEFA Central">
+        <meta name="keywords" content="Sucursales, Productos y Seguimiento de pedidos de compras ">
+        <meta name="author" content="Andrea Gudalupe Concha D&iacute;az   22000944,
+              Alondra Goretti Martinez Saldaña     22001414,
+              Israel de Jesús Lira Navarro         22001353,
+              Angela Guadalupe Fernandez Gonzalez  22002375,
+              Brian Fernando Torres Chico          22001691 ">
+
+        <!-- Agregamos las referencias de Boostrap -->
+        <link rel="stylesheet" href="style/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style/bootstrap/css/bootstrap-utilities.min.css">
+        <link rel="stylesheet" href="style/bootstrap/css/bootstrap-grid.min.css">
+        <!-- Agregamos la referencia  de SweetAlert2 -->
+
+        <link rel="stylesheet" href="style/sweetalert2/sweetalert2.min.css">
+
+        <!-- Link para los iconos -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
+
+
+
+        <style>
+            .card{
+
+                margin: auto;
+                background: #eee;
+
+                border: 2px solid transparent;
+
+                -moz-border-image: -moz-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%);
+                -webkit-border-image: -webkit-linear-gradient(top, #3acfd5 0%, #3a4ed5 100%);
+                border-image: linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%);
+
+                border-image-slice: 1;
+            }
+        </style>
+
+
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-12 mt-2">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-center">
+                        <h3>M&oacute;dulo de control de Sucursal</h3> 
+                    </div>
+                    <div class="card-body">
+                        <div id="divDetalleSucursal" class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="h4">Detalle de Sucursal</span>
+                                        <button class="float-end btn btn-outline-danger" onclick="cm.setDetalleSucursalVisible(false);">X</button>
+                                    </div>
+                                    <div class="card-body mt-2">
+                                        <div class="form">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" class="form-control" id="txtIdSucursal" placeholder="IDSucursal:">
+                                                        <label class="form-label" for="txtIdSucursal">IDSucursal: </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" class="form-control" id="txtNombreSucursal" placeholder="Nombre de la sucursal:">
+                                                        <label class="form-label" for="txtNombreSucursal">Nombre de la sucursal:</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" class="form-control" id="txtTitularSucursal" placeholder="Titular:">
+                                                        <label class="form-label" for="txtTitularSucursal">Titular:</label>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row mt-2">
+                                                <div class="col-3">
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" class="form-control" id="txtRfcSucrsal" placeholder="RFC:">
+                                                        <label class="form-label" for="txtRfcSucrsal">RFC:</label>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-3">
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" class="form-control" id="txtDomicilioSucursal" placeholder="Domicilio:">
+                                                        <label class="form-label" for="txtDomicilioSucursal">Domicilio:</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-3">
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" class="form-control" id="txtColoniaSucursal" placeholder="Colonia:">
+                                                        <label class="form-label" for="txtColoniaSucursal">Colonia:</label>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-3">
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" class="form-control" id="txtCodigoPostalSucursal" placeholder="Codigo Postal:">
+                                                        <label class="form-label" for="txtCodigoPostalSucursal">Codigo Postal:</label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="row mt-2">
+                                                <div class="col-4">
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" class="form-control" id="txtCiudadSucursal" placeholder="Ciudad:">
+                                                        <label class="form-label" for="txtCiudadSucursal">Ciudad:</label>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-4">
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" class="form-control" id="txtEstadoSucursal" placeholder="Estado:">
+                                                        <label class="form-label" for="txtEstadoSucursal">Estado:</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-4">
+                                                    <div class="form-floating mb-3"> 
+                                                        <select id="cmbEstatusSucursal" class="form-select" aria-label="Activo">
+                                                            <option value="1">1</option> 
+                                                            <option value="2">0</option>
+
+                                                        </select> 
+                                                        <label for="cmbEstatusSucursal">Estatus</label> 
+                                                    </div> 
+
+                                                </div>
+                                            </div>
+
+                                            <div class="row mt-2">
+                                                <div class="col-3">
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" class="form-control" id="txtTelefonoSucursal" placeholder="Telefono:">
+                                                        <label class="form-label" for="txtTelefonoSucursal">Telefono:</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-3">
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" class="form-control" id="txtLatitudSucursal" placeholder="Estado:">
+                                                        <label class="form-label" for="txtLatitudSucursal">Latitud:</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-3">
+                                                    <div class="form-floating mb-3">
+                                                        <input type="text" class="form-control" id="txtLongitudSucrsal" placeholder="Estatus:">
+                                                        <label class="form-label" for="txtLongitudSucrsal">Longitud:</label>
+                                                    </div>
+                                                </div>
+
+
+
+
+
+
+                                            </div>
+
+                                            <div class="row mt-3">
+                                                <div class="col-12 justify-content-center">
+
+                                                    <div class="text-center">
+                                                        <button class="btn btn-primary me-2" onclick="cm.save();"><i class="bi bi-bookmark">   Guardar</i></button>
+                                                        <button class="btn btn-danger ms-2 me-2" onclick="cm.deleteSucursal();"><i class="bi bi-trash3"></i>   Eliminar</button>
+                                                        <button class="btn btn-success ms-2 me-2" onclick="cm.clearForm();"><i class="bi bi-plus-circle"></i> Modificar</button>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="divCatalogoSucursal" class="row mt-2">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+
+                                        <span class="h4">Catalogo de Sucursal</span>
+                                        <button class="ms-3 btn btn-outline-success" onclick="cm.clearAndShowDetalleSucursal();"><i class="bi bi-plus"></i>Nuevo</button>
+                                    </div>
+                                    <div class="card-body">
+
+                                       <table class="table table-hover mt-2">
+
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Nombre</th>
+                                                    <th>Titular</th>
+                                                    <th>RFC</th>
+                                                    <th>Domicilio</th>
+                                                    <th>Codigo Postal</th>
+                                                    <th>Telefono</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody id="tbodySucursal">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+</html>
